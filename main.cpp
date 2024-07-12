@@ -34,6 +34,13 @@ int main()
     n2->next = n3;
     n3->next = n4;
 
+    insert(n0, new ListNode(5));
+
+    remove(n0);
+
+    ListNode *nodeAccess = access(n0, 2);
+
+    int index = find(n0, 2);
     #pragma endregion
 
 }
