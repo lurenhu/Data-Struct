@@ -2,6 +2,7 @@
 #include "myArray.h"
 #include "ListNode.h"
 #include "MyList.h"
+#include "Stack.h"
 
 using namespace std;
 
@@ -60,4 +61,27 @@ int main()
 #pragma endregion
 
     //--------------------------------------------
+
+#pragma region 栈
+    // LinkedListStack LinkedListStack;
+    // LinkedListStack.Push(1);
+    // LinkedListStack.Push(2);
+    // LinkedListStack.Push(3);
+    // LinkedListStack.Push(4);
+    // int ListTop = LinkedListStack.Top();
+    // LinkedListStack.Pop();
+    // int ListSize = LinkedListStack.Size();
+    // bool ListIsEmpty = LinkedListStack.IsEmpty();
+
+    // ArrayStack ArrayStack;
+    // ArrayStack.Push(1);
+    // ArrayStack.Push(2);
+    // ArrayStack.Push(3);
+    // ArrayStack.Push(4);
+    // int ArrayTop = ArrayStack.Top();
+    // ArrayStack.Pop();
+    // int ArraySize = ArrayStack.Size();
+    // bool ArrayIsEmpty = ArrayStack.IsEmpty();
+
+#pragma endregion 栈
 }

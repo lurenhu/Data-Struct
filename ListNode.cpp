@@ -60,3 +60,12 @@ int find(ListNode *root, int target)
     }
     return -1;
 }
+
+void FreeMemoryLinkedList(ListNode *root)
+{
+    while (root->next != nullptr)
+    {
+        remove(root);
+    }
+    delete root;
+}
