@@ -3,6 +3,7 @@
 #include "ListNode.h"
 #include "MyList.h"
 #include "Stack.h"
+#include "Queue.h"
 
 using namespace std;
 
@@ -84,4 +85,30 @@ int main()
     // bool ArrayIsEmpty = ArrayStack.IsEmpty();
 
 #pragma endregion 栈
+
+    //--------------------------------------------
+
+#pragma region 队列
+
+    // LinkedListQueue LinkedListQueue;
+    // LinkedListQueue.Push(1);
+    // LinkedListQueue.Push(2);
+    // LinkedListQueue.Push(3);
+    // LinkedListQueue.Push(4);
+    // LinkedListQueue.Push(5);
+    // int listSize = LinkedListQueue.Size();
+    // bool listIsEmpty = LinkedListQueue.IsEmpty();
+    // int listPop = LinkedListQueue.Pop();
+
+    // ArrayQueue ArrayQueue(10);
+    // ArrayQueue.Push(1);
+    // ArrayQueue.Push(2);
+    // ArrayQueue.Push(3);
+    // ArrayQueue.Push(4);
+    // ArrayQueue.Push(5);
+    // int arraySize = ArrayQueue.Size();
+    // bool arrayIsEmpty = ArrayQueue.IsEmpty();
+    // int arrayPop = ArrayQueue.Pop();
+
+#pragma endregion 队列
 }
