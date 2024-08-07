@@ -16,6 +16,12 @@ struct Pair
 #ifndef ARRAYHASHMAP_H
 #define ARRAYHASHMAP_H
 
+// 哈希冲突：从本质上看，哈希函数就是将所有的key所构建的输入空间映射到数组所有索引构成的输出空间，
+// 而这里的输入空间是一定大于输出空间的，所有在理论上一定存在两个不一样的key值对应同一个输出value
+// 这种情况就被称为哈希冲突
+
+
+
 class ArrayHashMap
 {
 private:
