@@ -64,3 +64,93 @@ void PostOrder(TreeNode *root, std::vector<int> &res)
     InOrder(root->right, res);
     res.push_back(root->val);
 }
+
+void ArrayBinaryTree::dfs(int i, std::string order, std::vector<int> &res)
+{
+    if (Val(i) == INT_MAX)
+    {
+        return;
+    }
+    if (order == "pre")
+    {
+        res.push_back(Val[i]);
+    }
+    dfs(Left(i), order, res);
+    if (order == "in")
+    {
+        res.push_back(Val(1));
+    }
+    dfs(Right(i), order, res);
+    if (order == "post")
+    {
+        res.push_back(Val(i));
+    }
+}
+
+ArrayBinaryTree::ArrayBinaryTree(std::vector<int> res)
+{
+    tree = res;
+}
+
+int ArrayBinaryTree::Size()
+{
+    return tree.size();
+}
+
+int ArrayBinaryTree::Val(int i)
+{
+    if (i < 0 || i >= Size())
+    {
+        return INT_MAX;
+    }
+    return tree[i];
+}
+
+int ArrayBinaryTree::Left(int i)
+{
+    return 2 * i + 1;
+}
+
+int ArrayBinaryTree::Right(int i)
+{
+    return 2 * i + 2;
+}
+
+int ArrayBinaryTree::Parent(int i)
+{
+    return (i - 1) / 2;
+}
+
+std::vector<int> ArrayBinaryTree::LevelOrder()
+{
+    std::vector<int> res;
+    for (int i = 0; i < Size(); i++)
+    {
+        if (Val(i) != INT_MAX)
+        {
+            res.push_back(Val[i]);
+        }
+    }
+    return res;
+}
+
+std::vector<int> ArrayBinaryTree::PreOrder()
+{
+    std::vector<int> res;
+    dfs(0, "pre", res);
+    return res;
+}
+
+std::vector<int> ArrayBinaryTree::InOrder()
+{
+    std::vector<int> res;
+    dfs(0, "in", res);
+    return res;
+}
+
+std::vector<int> ArrayBinaryTree::PostOrder()
+{
+    std::vector<int> res;
+    dfs(0, "post", res);
+    return res;
+}
