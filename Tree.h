@@ -37,3 +37,27 @@ public:
 };
 
 #endif BINARYTREE
+
+#ifndef AVLTREE
+#define AVLTREE
+
+struct AVLTreeNode
+{
+    int val{};
+    int height = 0;
+    AVLTreeNode *left{};
+    AVLTreeNode *right{};
+    AVLTreeNode() = default;
+    explicit AVLTreeNode(int x) : val(x) {};
+};
+
+int Height(AVLTreeNode *node);
+void UpdateHeight(AVLTreeNode *node);
+
+int BalanceFactor(AVLTreeNode *node)
+
+AVLTreeNode *Rotate(AVLTreeNode *node);
+void AVLInsert(AVLTreeNode *root, int val);
+void AVLRemove(AVLTreeNode *root, int val);
+
+#endif AVLTREE

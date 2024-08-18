@@ -154,3 +154,161 @@ std::vector<int> ArrayBinaryTree::PostOrder()
     dfs(0, "post", res);
     return res;
 }
+
+int Height(AVLTreeNode *node)
+{
+    return node == nullptr ? -1 : node->height;
+}
+
+void UpdateHeight(AVLTreeNode *node)
+{
+    node->height = std::max(Height(node->right), Height(node->left)) + 1;
+}
+
+int BalanceFactor(AVLTreeNode *node)
+{
+    if (node == nullptr)
+    {
+        return 0;
+    }
+    return Height(node->left) - Height(node->right);
+}
+
+AVLTreeNode *RightRotate(AVLTreeNode *node)
+{
+    AVLTreeNode *child = node->left;
+    AVLTreeNode *grandChild = node->right;
+
+    child->right = node;
+    node->left = grandChild;
+
+    UpdateHeight(node);
+    UpdateHeight(child);
+    return child;
+}
+
+AVLTreeNode *LeftRotate(AVLTreeNode *node)
+{
+    AVLTreeNode *child = node->right;
+    AVLTreeNode *grandChild = node->left;
+
+    child->left = node;
+    node->right = grandChild;
+
+    UpdateHeight(node);
+    UpdateHeight(child);
+    return child;
+}
+
+AVLTreeNode *Rotate(AVLTreeNode *node)
+{
+    int balanceFactor = BalanceFactor(node);
+    if (balanceFactor > 1)
+    {
+        if (BalanceFactor(node->left) >= 0)
+        {
+            return RightRotate(node);
+        }
+        else
+        {
+            node->left = LeftRotate(node->left);
+            return RightRotate(node);
+        }
+    }
+    if (balanceFactor < -1)
+    {
+        if (BalanceFactor(node->right) <= 0)
+        {
+            return LeftRotate(node);
+        }
+        else
+        {
+            node->right = RightRotate(node->right);
+            return LeftRotate(node);
+        }
+    }
+
+    return node;
+}
+
+void AVLInsert(AVLTreeNode *root, int val)
+{
+    root = AVLInsertHelper(root, val);
+}
+
+AVLTreeNode *AVLInsertHelper(AVLTreeNode *node, int val)
+{
+    if (node == nullptr)
+    {
+        return new AVLTreeNode(val);
+    }
+    if (val > node->val)
+    {
+        AVLInsertHelper(node->right, val);
+    }
+    else if (val < node->left)
+    {
+        AVLInsertHelper(node->left, val);
+    }
+    else
+    {
+        return node;
+    }
+
+    UpdateHeight(node);
+    node = Rotate(node);
+    return node;
+}
+
+void AVLRemove(AVLTreeNode *root, int val)
+{
+    root = AVLRemoveHelper(root, val);
+}
+
+AVLTreeNode *AVLRemoveHelper(AVLTreeNode *node, int val)
+{
+    if (node == nullptr)
+    {
+        return nullptr;
+    }
+    if (val > node->val)
+    {
+        AVLRemoveHelper(node->right, val);
+    }
+    else if (val < node->val)
+    {
+        AVLRemoveHelper(node->left, val);
+    }
+    else
+    {
+        if (node->left == nullptr || node->right == nullptr)
+        {
+            AVLTreeNode *child = node->left == nullptr ? node->left : node->right;
+            if (child == nullptr)
+            {
+                delete node;
+                return nullptr;
+            }
+            else
+            {
+                delete node;
+                node = child;
+            }
+        }
+        else
+        {
+            AVLTreeNode *temp = node->right;
+            while (temp->left != nullptr)
+            {
+                temp = temp->left;
+            }
+            int tempVal = temp->val;
+            node->right = removeHelper(node->right, temp->val);
+            node->val = tempVal;
+        }
+    }
+
+    UpdateHeight(node);
+    node = Rotate(node);
+    return node;
+}
