@@ -10,6 +10,8 @@ private:
     std::vector<int> maxHeap;
 
 public:
+    MaxHeap(std::vector<int> nums);
+
     bool IsEmpty();
 
     int Left(int i);

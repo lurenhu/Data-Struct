@@ -8,6 +8,15 @@ int MaxHeap::Left(int i)
     return 2 * i + 1;
 }
 
+MaxHeap::MaxHeap(std::vector<int> nums)
+{
+    maxHeap = nums;
+    for (int i = Parent(maxHeap.size() - 1); i >= 0; i--)
+    {
+        SiftDown(i);
+    }
+}
+
 /// @brief 判断该堆是否为空
 /// @return
 bool MaxHeap::IsEmpty()
