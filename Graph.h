@@ -1,6 +1,8 @@
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <unordered_set>
+#include <queue>
 
 #ifndef GRAPH
 #define GRAPH
@@ -42,5 +44,10 @@ public:
     void AddVertex(Vertex *vet);
     void RemoveVertex(Vertex *vet);
 };
+
+std::vector<Vertex *> GraphBFS(GraphAdjList &graph, Vertex *startVet);
+
+void dfs(GraphAdjList &graph, std::unordered_set<Vertex *> &visited, std::vector<Vertex *> &res, Vertex *vet);
+std::vector<Vertex *> GraphDFS(GraphAdjList &graph, Vertex *startVet);
 
 #endif GRAPH

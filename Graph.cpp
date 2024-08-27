@@ -135,3 +135,49 @@ void GraphAdjList::RemoveVertex(Vertex *vet)
         Remove(adj.second, vet);
     }
 }
+
+std::vector<Vertex *> GraphBFS(GraphAdjList &graph, Vertex *startVet)
+{
+    std::vector<Vertex *> res;
+    std::unordered_set<Vertex *> visited = {startVet};
+    std::queue<Vertex *> que;
+    que.push(startVet);
+    while (!que.empty())
+    {
+        Vertex *vet = que.front();
+        que.pop();
+        res.push_back(vet);
+        for (auto adjVet : graph.adjList[vet])
+        {
+            if (visited.count(adjVet))
+            {
+                continue;
+            }
+            que.push(adjVet);
+            visited.emplace(adjVet);
+        }
+    }
+    return res;
+}
+
+void dfs(GraphAdjList &graph, std::unordered_set<Vertex *> &visited, std::vector<Vertex *> &res, Vertex *vet)
+{
+    res.push_back(vet);
+    visited.emplace(vet);
+    for (auto *adjVet : graph.adjList[vet])
+    {
+        if (visited.count(adjVet))
+        {
+            continue;
+        }
+        dfs(graph, visited, res, adjVet);
+    }
+}
+
+std::vector<Vertex *> GraphDFS(GraphAdjList &graph, Vertex *startVet)
+{
+    std::vector<Vertex *> res;
+    std::unordered_set<Vertex> visited;
+    dfs(graph, visited, res, startVet);
+    return res;
+}
