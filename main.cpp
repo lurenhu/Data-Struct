@@ -1,14 +1,13 @@
-#include <iostream>
-#include "myArray.h"
 #include "ListNode.h"
 #include "MyList.h"
-#include "Stack.h"
 #include "Queue.h"
+#include "Stack.h"
+#include "myArray.h"
+#include <iostream>
 
 using namespace std;
 
-int main()
-{
+int main() {
 #pragma region 数组
 // int arr[] = {1, 2, 3, 4, 5};
 // int size = sizeof(arr) / sizeof(arr[0]);

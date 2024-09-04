@@ -4,13 +4,12 @@
 #ifndef LINKEDLISTQUEUE_H
 #define LINKEDLISTQUEUE_H
 
-class LinkedListQueue
-{
-private:
+class LinkedListQueue {
+  private:
     ListNode *front, *rear;
     int queSize;
 
-public:
+  public:
     LinkedListQueue();
     ~LinkedListQueue();
     int Size();
@@ -26,15 +25,14 @@ public:
 #ifndef ARRAYQUEUE_H
 #define ARRAYQUEUE_H
 
-class ArrayQueue
-{
-private:
+class ArrayQueue {
+  private:
     int *nums;
     int front;
     int queSize;
     int queCapacity;
 
-public:
+  public:
     ArrayQueue(int capacity);
     ~ArrayQueue();
     int Capacity();

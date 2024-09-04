@@ -1,6 +1,6 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
-#include <algorithm>
 
 void SelectionSort(std::vector<int> &nums);
 void BubbleSort(std::vector<int> &nums);

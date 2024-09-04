@@ -4,8 +4,7 @@
 #ifndef PAIR
 #define PAIR
 
-struct Pair
-{
+struct Pair {
     int key;
     std::string val;
     Pair(int key, std::string val) : key(key), val(val) {};
@@ -20,14 +19,11 @@ struct Pair
 // 而这里的输入空间是一定大于输出空间的，所有在理论上一定存在两个不一样的key值对应同一个输出value
 // 这种情况就被称为哈希冲突
 
-
-
-class ArrayHashMap
-{
-private:
+class ArrayHashMap {
+  private:
     std::vector<Pair *> buckets;
 
-public:
+  public:
     ArrayHashMap();
     ~ArrayHashMap();
     int HashFunc(int key);

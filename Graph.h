@@ -1,19 +1,18 @@
 #include <iostream>
-#include <vector>
+#include <queue>
 #include <unordered_map>
 #include <unordered_set>
-#include <queue>
+#include <vector>
 
 #ifndef GRAPH
 #define GRAPH
 
-class GraphAdjMat
-{
-private:
+class GraphAdjMat {
+  private:
     std::vector<int> vertices;
     std::vector<std::vector<int>> adjMat;
 
-public:
+  public:
     GraphAdjMat(const std::vector<int> &vertices, const std::vector<std::vector<int>> &edges);
     int Size() const;
     void AddVertex(int val);
@@ -23,19 +22,17 @@ public:
     void Print();
 };
 
-struct Vertex
-{
+struct Vertex {
     int value;
     Vertex *next;
     Vertex(int x) : value(x), next(nullptr) {};
 };
 
-class GraphAdjList
-{
-private:
+class GraphAdjList {
+  private:
     std::unordered_map<Vertex *, std::vector<Vertex *>> adjList;
 
-public:
+  public:
     GraphAdjList(std::vector<std::vector<Vertex *>> edges);
     int Size() const;
     void Remove(std::vector<Vertex *> &ves, Vertex *vet);

@@ -2,11 +2,10 @@
 #ifndef LISTNODE_H
 #define LISTNODE_H
 
-struct ListNode
-{
+struct ListNode {
     int value;
     ListNode *next;
-    ListNode(int x) : value(x), next(nullptr){};
+    ListNode(int x) : value(x), next(nullptr) {};
 };
 
 #endif LISTNODE_H

@@ -3,15 +3,14 @@
 #ifndef MYLIST_H
 #define MYLIST_H
 
-class MyList
-{
-private:
+class MyList {
+  private:
     int *arr;
     int arrCapacity = 10;
     int arrSize = 0;
     int extendRation = 2;
 
-public:
+  public:
     MyList();
     ~MyList();
     int Size();

@@ -4,12 +4,11 @@
 #ifndef MAXHEAP
 #define MAXHEAP
 
-class MaxHeap
-{
-private:
+class MaxHeap {
+  private:
     std::vector<int> maxHeap;
 
-public:
+  public:
     MaxHeap(std::vector<int> nums);
 
     bool IsEmpty();

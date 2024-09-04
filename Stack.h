@@ -4,13 +4,12 @@
 #ifndef LINKEDLISTSTACK_H
 #define LINKEDLISTSTACK_H
 
-class LinkedListStack
-{
-private:
+class LinkedListStack {
+  private:
     ListNode *stackTop;
     int stackSize;
 
-public:
+  public:
     LinkedListStack();
     ~LinkedListStack();
     int Size();
@@ -19,7 +18,6 @@ public:
     int Pop();
     int Top();
     std::vector<int> ToVector();
-
 };
 
 #endif LINKEDLISTSTACK_H
@@ -27,12 +25,11 @@ public:
 #ifndef ARRAYSTACK_H
 #define ARRAYSTACK_H
 
-class ArrayStack
-{
-private:
+class ArrayStack {
+  private:
     std::vector<int> arrayStack;
 
-public:
+  public:
     ArrayStack();
     ~ArrayStack();
     int Size();

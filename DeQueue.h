@@ -3,12 +3,12 @@
 #ifndef DOUBLELISTNODE_H
 #define DOUBLELISTNODE_H
 
-struct DoubleListNode
-{
+struct DoubleListNode {
     int value;
     DoubleListNode *next;
     DoubleListNode *prev;
-    DoubleListNode(int x) : value(x), next(nullptr), prev(nullptr) {}
+    DoubleListNode(int x) : value(x), next(nullptr), prev(nullptr) {
+    }
 };
 
 #endif DOUBLELISTNODE_H
@@ -16,13 +16,12 @@ struct DoubleListNode
 #ifndef LINKEDLISTDEQUEUE_H
 #define LINKEDLISTDEQUEUE_H
 
-class DoubleLinkedListQueue
-{
-private:
+class DoubleLinkedListQueue {
+  private:
     DoubleListNode *front, *rear;
     int queSize;
 
-public:
+  public:
     LinkedListQueue();
     ~LinkedListQueue();
     int Size();
@@ -43,14 +42,13 @@ public:
 #ifndef ARRAYDEQUEUE_H
 #define ARRAYDEQUEUE_H
 
-class ArrayDequeue
-{
-private:
+class ArrayDequeue {
+  private:
     std::vector<int> nums;
     int front;
     int queSize;
 
-public:
+  public:
     ArrayDequeue(int capacity);
     ~ArrayDequeue();
     int Size();

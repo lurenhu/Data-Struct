@@ -4,12 +4,12 @@
 #ifndef BINARYTREE
 #define BINARYTREE
 
-struct TreeNode
-{
+struct TreeNode {
     int val;
     TreeNode *left;
     TreeNode *right;
-    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+    TreeNode(int x) : val(x), left(nullptr), right(nullptr) {
+    }
 };
 
 std::vector<int> LevelOrder(TreeNode *root);
@@ -17,13 +17,12 @@ void PreOrder(TreeNode *root, std::vector<int> &res);
 void InOrder(TreeNode *root, std::vector<int> &res);
 void PostOrder(TreeNode *root, std::vector<int> &res);
 
-class ArrayBinaryTree
-{
-private:
+class ArrayBinaryTree {
+  private:
     std::vector<int> tree;
     void dfs(int i, std::string order, std::vector<int> &res);
 
-public:
+  public:
     ArrayBinaryTree(std::vector<int> res);
     int Size();
     int Val(int i);
@@ -41,8 +40,7 @@ public:
 #ifndef AVLTREE
 #define AVLTREE
 
-struct AVLTreeNode
-{
+struct AVLTreeNode {
     int val{};
     int height = 0;
     AVLTreeNode *left{};
@@ -56,7 +54,7 @@ void UpdateHeight(AVLTreeNode *node);
 
 int BalanceFactor(AVLTreeNode *node)
 
-AVLTreeNode *Rotate(AVLTreeNode *node);
+    AVLTreeNode *Rotate(AVLTreeNode *node);
 void AVLInsert(AVLTreeNode *root, int val);
 void AVLRemove(AVLTreeNode *root, int val);
 
