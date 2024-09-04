@@ -151,3 +151,101 @@ void HeapSort(std::vector<int> &nums)
         SiftDown(nums, i, 0);
     }
 }
+
+void BucketSort(std::vector<float> &nums)
+{
+    int k = nums.size() / 2;
+    std::vector<std::vector<float>> buckets(k);
+    for (float num : nums)
+    {
+        int i = num * k;
+        buckets[i].push_back(num);
+    }
+    for (std::vector<float> &bucket : buckets)
+    {
+        std::sort(bucket.begin(), bucket.end());
+    }
+    i = 0;
+    for (std::vector<float> &bucket : buckets)
+    {
+        for (float num : bucket)
+        {
+            nums[i++] = num;
+        }
+    }
+}
+
+void CountingSort(std::vector<int> &nums)
+{
+    int m = 0;
+    for (int num : nums)
+    {
+        m = std::max(m, num);
+    }
+    std::vector<int> counter(m + 1, 0);
+    for (int num : nums)
+    {
+        counter[num]++;
+    }
+    for (int i = 0; i < m; i++)
+    {
+        counter[i + 1] += counter[i];
+    }
+    int n = nums.size();
+    std::vector<int> res(n);
+    for (int i = n - 1; i >= 0; i--)
+    {
+        int num = nums[i];
+        res[counter[num] - 1] = num;
+        counter[num]--;
+    }
+    nums = res;
+}
+
+int Digit(int num, int exp)
+{
+    return (num / exp) % 10;
+}
+
+void countingSortDigit(vector<int> &nums, int exp)
+{
+    // 十进制的位范围为 0~9 ，因此需要长度为 10 的桶数组
+    vector<int> counter(10, 0);
+    int n = nums.size();
+    // 统计 0~9 各数字的出现次数
+    for (int i = 0; i < n; i++)
+    {
+        int d = digit(nums[i], exp); // 获取 nums[i] 第 k 位，记为 d
+        counter[d]++;                // 统计数字 d 的出现次数
+    }
+    // 求前缀和，将“出现个数”转换为“数组索引”
+    for (int i = 1; i < 10; i++)
+    {
+        counter[i] += counter[i - 1];
+    }
+    // 倒序遍历，根据桶内统计结果，将各元素填入 res
+    vector<int> res(n, 0);
+    for (int i = n - 1; i >= 0; i--)
+    {
+        int d = digit(nums[i], exp);
+        int j = counter[d] - 1; // 获取 d 在数组中的索引 j
+        res[j] = nums[i];       // 将当前元素填入索引 j
+        counter[d]--;           // 将 d 的数量减 1
+    }
+    // 使用结果覆盖原数组 nums
+    for (int i = 0; i < n; i++)
+        nums[i] = res[i];
+}
+
+void RadixSort(std::vector<int> &nums)
+{
+    // 获取数组的最大元素，用于判断最大位数
+    int m = *max_element(nums.begin(), nums.end());
+    // 按照从低位到高位的顺序遍历
+    for (int exp = 1; exp <= m; exp *= 10)
+        // 对数组元素的第 k 位执行计数排序
+        // k = 1 -> exp = 1
+        // k = 2 -> exp = 10
+        // 即 exp = 10^(k-1)
+        countingSortDigit(nums, exp);
+}
