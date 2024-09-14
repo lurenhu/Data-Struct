@@ -77,3 +77,36 @@ std::vector<std::vector<int>> SubSetSumINative(std::vector<int> &nums, int targe
     BackTrack(state, target, total, nums, res);
     return res;
 }
+
+void BackTrack(int row, int n, std::vector<std::vector<string>> &state,
+               std::vector<std::vector<std::vector<std::string>>> &res, std::vector<bool> &cols,
+               std::vector<bool> &diags1, std::vector<bool> &diags2) {
+    if (row == n) {
+        res.push_back(state);
+        return;
+    }
+
+    for (int col = 0; col < n; col++) {
+        int diag1 = row - col + n - 1;
+        int diag2 = row + col;
+        if (!cols[col] && !diags1[diag1] && !diags2[diag2]) {
+            state[row][col] = "Q";
+            cols[col] = diags1[diag1] = diags2[diag2] = true;
+            BackTrack(row + 1, n, state, res, cols, diags1, diags2);
+            state[row][col] = "#";
+            cols[col] = diags1[diag1] = diags2[diag2] = false;
+        }
+    }
+}
+
+std::vector<std::vector<std::vector<std::string>>> nQueen(int n) {
+    std::vector<std::vector<std::string>> state(n, vector<string>(n, "#"));
+    std::vector<bool> cols(n, false);           // 记录列是否有皇后
+    std::vector<bool> diags1(2 * n - 1, false); // 记录主对角线上是否有皇后
+    std::vector<bool> diags2(2 * n - 1, false); // 记录次对角线上是否有皇后
+    std::vector<std::vector<std::vector<std::string>>> res;
+
+    backtrack(0, n, state, res, cols, diags1, diags2);
+
+    return res;
+}
